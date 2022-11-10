@@ -161,7 +161,9 @@ export const Hero = () => {
                }}
             >
                <div style={{position: 'relative',width: '428px', height:'497px'}}>
-                <img style={{position: 'absolute',width: '450px', height:'497px',zIndex:'2',bottom: '-30px',right:'-25px'}} src="metaverse-women-id-gno.webp" />
+                <div style={{backgroundImage:'url(metaverse-women-id-gno.webp)',backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',backgroundPositionX: 'right', position: 'absolute',width: '450px',
+                height:'497px',zIndex:'2',bottom: '-30px',right:'-25px'}} />
                </div>
             </Box>
          </Flex>
