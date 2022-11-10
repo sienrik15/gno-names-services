@@ -14,7 +14,7 @@ export const Nav = () => {
    
    //setTheme('dark')
     useEffect(() => {
-      setTheme('dark')
+      //setTheme('dark')
    })
 
    const collapseItems = [
@@ -150,13 +150,14 @@ export const Nav = () => {
                       position: 'absolute',
                       bottom: '12px',
                       fontSize: '12px',
-                      color: '#ff8b8b',
+                      color: '#ebf11c',
                       width: '100%',
+                      fontWeight:'500',
                       textAlign: 'center'}}>
                         on caming
                </span>
             </Navbar.Link>
-            <Navbar.Link href="https://twitter.com/Disperze_">
+            <Navbar.Link href="https://twitter.com/gnonames_">
                Community
                <Image
                   src="twitter-icon.svg"

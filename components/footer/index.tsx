@@ -1,4 +1,4 @@
-import {Divider, Text, Image} from '@nextui-org/react';
+import {Divider, Text, Image, Link} from '@nextui-org/react';
 import React from 'react';
 import {AcmeLogo} from '../navbar/logo';
 import {Box} from '../styles/box';
@@ -205,12 +205,14 @@ export const Footer = () => {
                      }}
                      wrap={'wrap'}
                   >
-                     <Image
-                        src="twitter-icon.svg"
-                        alt="Default Image"
-                        width={30}
-                        height={30}
-                     />
+                     <Link href="https://twitter.com/gnonames_">
+                        <Image
+                           src="twitter-icon.svg"
+                           alt="Default Image"
+                           width={30}
+                           height={30}
+                        />
+                     </Link>
                      {/* <AcmeLogo />
                      <AcmeLogo />
                      <AcmeLogo /> */}
