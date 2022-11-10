@@ -91,6 +91,11 @@ export const Hero = () => {
                   </strong>
                </Text>
 
+               <form
+                  //action="#"
+                  method="dialog"
+                  onSubmit={handler}
+               >  
                <Flex
                   css={{
                      gap: '$4',
@@ -116,6 +121,8 @@ export const Hero = () => {
                   />
                   <Button onClick={handler} css={{background:'#ffffff', color:'#000000'}} size="lg" auto>Search</Button>
                </Flex>
+               </form>  
+               
                {/* <Flex
                   wrap={'wrap'}
                   css={{
