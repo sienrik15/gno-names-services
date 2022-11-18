@@ -72,7 +72,7 @@ export const Features1 = () => {
                            color: '$accents8',
                         }}
                      >
-                        Search domain names TLDs (Top Level Domains ).
+                        Search domain names (GNO Names Service).
                      </Text>
                   </Flex>
                </Flex>
@@ -85,7 +85,7 @@ export const Features1 = () => {
                   <BoxIcon />
                   <Flex direction={'column'}>
                      <Text h4 weight={'medium'}>
-                        2) Register .gnot
+                        2) Register .gno
                      </Text>
                      <Text
                         span
@@ -116,7 +116,7 @@ export const Features1 = () => {
                            color: '$accents8',
                         }}
                      >
-                        Can add all subdomains of the .sol
+                        Can add all subdomains of the .gno
                      </Text>
                   </Flex>
                </Flex>

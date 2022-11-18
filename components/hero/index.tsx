@@ -48,17 +48,19 @@ export const Hero = () => {
                   }}
                >
                   <Text
-                     h1
+                     h2
                      css={{
                         display: 'inline',
+                        fontSize: '42px'
                      }}
                   >
-                     GNO Chain Name Service{' '}
+                     GNO Chain Domain Name Service{' '}
                   </Text>
                   <Text
                      h1
                      css={{
                         display: 'inline',
+                        fontSize: '42px'
                      }}
                   >
                      starts here with {' '}
@@ -70,7 +72,7 @@ export const Hero = () => {
                      }}
                      color="#bda42c"
                   >
-                     .gnot {' '}
+                     .gno {' '}
                   </Text>
                </Box>
 
@@ -85,7 +87,7 @@ export const Hero = () => {
                   size={'$lg'}
                   span
                >
-                  Get your .gnot domain can be used to represent you in  {' '}
+                  Get your .gno & .gnot domain can be used to represent you in  {' '}
                   <strong>
                      gnoland space
                   </strong>
@@ -109,7 +111,7 @@ export const Hero = () => {
                      id='names-input'
                      bordered 
                      animated={false}
-                     labelRight=".gnot" 
+                     labelRight=".gno" 
                      placeholder="search names" 
                      size="xl"
                      width="70%" 

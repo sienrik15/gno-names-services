@@ -73,7 +73,7 @@ export const Trusted = () => {
                      <Flex align={'center'} justify={'center'}>
                         {/* <AcmeLogo /> */}
                         <Text weight={'semibold'} span size={'$lg'}>
-                           ⚛️.gnot
+                           ⚛️.gno
                         </Text>
                      </Flex>
                   </div>   
@@ -87,7 +87,7 @@ export const Trusted = () => {
                      <Flex align={'center'}>
                         {/* <AcmeLogo />{' '} */}
                         <Text weight={'semibold'} span size={'$lg'}>
-                           meta.gnot
+                           meta.gno
                         </Text>
                      </Flex>
                   </div>   
@@ -100,7 +100,7 @@ export const Trusted = () => {
                   }}>
                      <Flex align={'center'}>
                         <Text weight={'semibold'} span size={'$lg'}>
-                           抹茶.gnot
+                           抹茶.gno
                         </Text>
                      </Flex>
                   </div>
@@ -113,7 +113,7 @@ export const Trusted = () => {
                   }}>
                      <Flex align={'center'}>
                         <Text weight={'semibold'} span size={'$lg'}>
-                           space.gnot
+                           space.gno
                         </Text>
                      </Flex>
                   </div>
