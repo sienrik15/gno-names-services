@@ -72,7 +72,7 @@ export const Features1 = () => {
                            color: '$accents8',
                         }}
                      >
-                        Search domain names (GNO Names Service).
+                        Search domain names (GNO Domain Names Service).
                      </Text>
                   </Flex>
                </Flex>

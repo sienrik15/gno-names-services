@@ -62,7 +62,7 @@ export const ModalLogin = () => {
                      }}
                   />
                   <Text b color="inherit" hideIn="xs">
-                     GNO NAMES
+                     GNO DOMAINS
                   </Text>
                </Flex>
                

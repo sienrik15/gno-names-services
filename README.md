@@ -1,17 +1,14 @@
 # NextJS and NextUI
 
-This is a UI for NextJS and NextUI. 
+This is a proyect web UI GNO name and domain service . 
 
-[NextJS](https://nextjs.org/) 
-[NextUI](https://nextui.org/)
-
-You can see the demo here: 
+You can see the section here: 
 
 ### Dark Mode
 
 ### Light Mode
 
-- Hero Section
+- Home Section
 - Features Section 1
 - Features Section 2
 - Features Section 3

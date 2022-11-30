@@ -53,7 +53,7 @@ export const Nav = () => {
                   }}
                />
             <Text b color="inherit" hideIn="xs">
-               GNO NAMES
+               GNO DOMAIN
             </Text>
          </Navbar.Brand>
          <Navbar.Content
@@ -157,7 +157,7 @@ export const Nav = () => {
                         on caming
                </span>
             </Navbar.Link>
-            <Navbar.Link href="https://twitter.com/gnonames_">
+            <Navbar.Link href="https://twitter.com/gnodomains">
                Community
                <Image
                   src="twitter-icon.svg"
