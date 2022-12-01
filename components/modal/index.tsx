@@ -30,12 +30,10 @@ export const ModalLogin = () => {
 
 
    useEffect(() => {
-      console.log("log=-----")
       if (firstRender.current) {
          firstRender.current = false;
          loginAdenaWallet()
       }
-      //loginAdenaWallet()
    })
 
    function disconnectWallet(){
@@ -58,7 +56,6 @@ export const ModalLogin = () => {
                   setConectWallet(data)
                   //@ts-ignore
                   window.adena.GetAccount().then((account)=>{
-                     console.log(account)
                      var objectString = JSON.stringify(account);
                      setCookie('accountdata', objectString);         
                      setAccountData(account)
@@ -77,8 +74,6 @@ export const ModalLogin = () => {
                      var object = JSON.parse(account)
                      setAccountData(object)
                   }
-                  console.log(account)
-                  console.log("ALREADY_CONNECTED")
                   closeHandler()
                   break;
                default:
@@ -105,7 +100,6 @@ export const ModalLogin = () => {
 
    return (
       <div>
-         {/* <Navbar.Link onClick={handler}>Login</Navbar.Link> */}
          {accountData ? (
             
             <Popover placement="bottom-right">
@@ -180,9 +174,7 @@ export const ModalLogin = () => {
                <strong>Connect wallet</strong> 
             </Button>
          )}
-         
-         
-         
+      
          <Modal
             closeButton
             blur
@@ -191,12 +183,6 @@ export const ModalLogin = () => {
             onClose={closeHandler}
          >
             <Modal.Header>
-               {/* <Text id="modal-title" size={18}>
-                  Welcome to
-                  <Text b size={18}>
-                     NextUI
-                  </Text>
-               </Text> */}
                <Flex 
                   //direction={'column'}
                   align={'center'}
