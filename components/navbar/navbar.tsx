@@ -53,7 +53,7 @@ export const Nav = () => {
                   }}
                />
             <Text b color="inherit" hideIn="xs">
-               GNO DOMAIN
+               GNO DOMAINS
             </Text>
          </Navbar.Brand>
          <Navbar.Content

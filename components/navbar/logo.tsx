@@ -1,6 +1,6 @@
 export const AcmeLogo = () => (
    <svg
-      className=""
+      // className=""
       fill="none"
       height="36"
       viewBox="0 0 32 32"

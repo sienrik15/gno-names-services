@@ -1,6 +1,8 @@
 import { Flex } from '../styles/flex';
 import { Box } from '../styles/box';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { getCookie, setCookie, deleteCookie } from 'cookies-next';
+
 import {
    Modal,
    Input,
@@ -10,25 +12,176 @@ import {
    Text,
    Navbar,
    Link,
-   Image
+   Image,
+   Grid,
+   Card,
+   User,
+   Popover
 } from '@nextui-org/react';
+import { LogoCircularAdena } from '../icons/LogoCircularAdena';
+import { LogoCircularKeplr } from '../icons/LogoCircularKeplr';
 
 export const ModalLogin = () => {
-   const [visible, setVisible] = React.useState(false);
+   const [visible, setVisible] = useState(false);
+   const [conectWallet, setConectWallet] = useState();
+   const [accountData, setAccountData] = useState();
    const handler = () => setVisible(true);
+   const firstRender = useRef(true);
 
+
+   useEffect(() => {
+      console.log("log=-----")
+      if (firstRender.current) {
+         firstRender.current = false;
+         loginAdenaWallet()
+      }
+      //loginAdenaWallet()
+   })
+
+   function disconnectWallet(){
+
+   }
+
+   async function loginAdenaWallet (){
+      //@ts-ignore
+      if (!window.adena) {
+         //open adena.app in a new tab if the adena object is not found
+         window.open("https://adena.app/", "_blank");
+      } else {
+         //@ts-ignore
+         adena.AddEstablish("GNO Domains").then((data) => {
+            
+            switch (data.type) {
+               case "CONNECTION_SUCCESS":
+                  var objectString = JSON.stringify(data);
+                  setCookie('conectwallet', objectString);         
+                  setConectWallet(data)
+                  //@ts-ignore
+                  window.adena.GetAccount().then((account)=>{
+                     console.log(account)
+                     var objectString = JSON.stringify(account);
+                     setCookie('accountdata', objectString);         
+                     setAccountData(account)
+                     closeHandler()
+                  })                  
+                  break;
+               case "ALREADY_CONNECTED":
+                  var conect:any = getCookie('conectwallet')
+                  if(conect!=undefined || conect!=""){
+                     var object = JSON.parse(conect)
+                     setConectWallet(object)
+                  }
+
+                  var account:any = getCookie('accountdata')
+                  if(account!=undefined || account!=""){
+                     var object = JSON.parse(account)
+                     setAccountData(object)
+                  }
+                  console.log(account)
+                  console.log("ALREADY_CONNECTED")
+                  closeHandler()
+                  break;
+               default:
+                  break;
+            }
+            
+         });
+      }
+   }
 
    const closeHandler = () => {
       setVisible(false);
-      console.log('closed');
    };
+
+   function getCoinGNOT() : any {
+      if (accountData) {
+         //@ts-ignore
+         return parseInt(accountData.data.coins)/1000000
+      }else {
+         return 0
+      }
+
+   }
+
    return (
       <div>
          {/* <Navbar.Link onClick={handler}>Login</Navbar.Link> */}
+         {accountData ? (
+            
+            <Popover placement="bottom-right">
+               <Popover.Trigger>
+                  <User
+                     //bordered
+                     as="button"
+                     onClick={()=>{}}
+                     //pointer
+                     src="logo-circular-adena.svg"
+                     name={accountData.data.address}
+                     size="ms"
+                     color="success"
+                     css={{
+                        '& span': {
+                           textTransform: 'lowercase',
+                           fontSize:"12px", //"16PX"
+                           fontWeight: 'bold',
+                           maxWidth: "100px",
+                        },
+                        '& .nextui-user-info': {
+                           //marginLeft: '4px',
+                        },
+                        '& .nextui-user-avatar':{
+                           minWidth: '34px',
+                           minHeight: '34px',
+                        }
+                     }}
+                  />
+               </Popover.Trigger>
+               <Popover.Content css={{borderBottom: "solid 1px"}}>
+                  <Grid.Container
+                     className="user-twitter-card__metrics-container"
+                     justify="flex-start"
+                     alignContent="center"
+                     css={{
+                        mw: "340px",
+                        borderRadius: "$lg",
+                        padding: "$sm",
+                     }}
+                  >
+                     <Row justify="center" align="center">
+                        <Text b size={14} css={{textTransform: 'uppercase',}}>
+                           GNO {accountData.data.chainId}
+                        </Text>
+                     </Row>  
+                     <Row css={{paddingTop:"10px",paddingBottom:'10px'}} justify="center" align="center">
+                        <Text>
+                        {accountData.data.address}
+                        </Text>
+                     </Row> 
+                     <Row>
+                        <Text>
+                           Balance
+                        </Text>
+                     </Row>
+                     <Row justify="center" align="center">
+                        <Text size={20}>
+                           <strong>{getCoinGNOT()} GNOT</strong>
+                        </Text>
+                     </Row> 
+                     {/* <Row css={{paddingTop:"10px",paddingBottom:'10px'}} justify="center" align="center">
+                        <Button onPress={disconnectWallet()} size="sm" bordered css={{borderColor:'#ffffff', color:'#ffffff'}}>
+                           Disconnect
+                        </Button>
+                     </Row>   */}
+                  </Grid.Container>
+               </Popover.Content>
+            </Popover>
+         ) : (
+            <Button onPress={handler} auto href="#" bordered color="gradient" borderWeight="extrabold" size="lg">
+               <strong>Connect wallet</strong> 
+            </Button>
+         )}
          
-         <Button onClick={handler} auto href="#" bordered color="gradient" borderWeight="extrabold" size="lg">
-            <strong>Connect wallet</strong> 
-         </Button>
+         
          
          <Modal
             closeButton
@@ -65,10 +218,9 @@ export const ModalLogin = () => {
                      GNO DOMAINS
                   </Text>
                </Flex>
-               
             </Modal.Header>
             <Modal.Body>
-               <Box
+               {/* <Box
                      css={{
                         //maxWidth: '600px',
                         textAlign: 'center',
@@ -97,8 +249,60 @@ export const ModalLogin = () => {
                      >
                         COMING {' '}
                      </Text>
+               </Box> */}
+               <Box
+                  css={{
+                     marginBottom:'30px !important',
+                  }}
+                  >
+               {/* <Image
+                  src="logo-circular-adena.svg"
+                  alt="Default Image"
+                  width={30}
+                  height={30}
+                  css={{
+                     display: 'inline-block',
+                  }}
+               />
+               <Text
+                  h4
+                  css={{
+                     display: 'inline-block',
+                     padding:'5px',
+                     letterSpacing: '3px'
+                  }}
+               >
+                  Adena Wallet
+               </Text> */}
+                  <Button 
+                     //@ts-ignore
+                     icon={<LogoCircularAdena width={40} height={40} />}
+                     size="xl"
+                     bordered
+                     onPress={()=>{loginAdenaWallet()}}
+                     css={{
+                        width: '100%',
+                        margin:'6px',
+                        borderColor: '#28415e',
+                     }}
+                     >
+                     Adena Wallet
+                  </Button>
+                  <Button 
+                     //@ts-ignore
+                     icon={<LogoCircularKeplr width={40} height={40} />}
+                     size="xl"
+                     bordered
+                     disabled
+                     css={{
+                        width: '100%',
+                        margin:'6px',
+                        borderColor: '#28415e',
+                     }}
+                     >
+                     Keplr Wallet
+                  </Button>
                </Box>
-               
                
                {/* <Input
                   clearable

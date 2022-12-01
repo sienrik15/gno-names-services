@@ -54,7 +54,7 @@ export const Hero = () => {
                         fontSize: '42px'
                      }}
                   >
-                     GNO Chain Domain Name Service{' '}
+                     GNO Chain Domains Name Service{' '}
                   </Text>
                   <Text
                      h1
@@ -87,7 +87,7 @@ export const Hero = () => {
                   size={'$lg'}
                   span
                >
-                  Get your .gno & .gnot domain can be used to represent you in  {' '}
+                  Get your .gno & .gnot domains can be used to represent you in  {' '}
                   <strong>
                      gnoland space
                   </strong>

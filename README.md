@@ -1,6 +1,6 @@
 # NextJS and NextUI
 
-This is a proyect web UI GNO name and domain service . 
+This is a proyect web UI GNO name and domains service . 
 
 You can see the section here: 
 
