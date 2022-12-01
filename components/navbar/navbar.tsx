@@ -27,7 +27,7 @@ export const Nav = () => {
    return (
       <>
          <Navbar
-         isBordered={isDark}
+         isBordered={false}//{isDark}
          variant="sticky"
          maxWidth="fluid"
          css={{

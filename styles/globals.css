@@ -11,7 +11,7 @@ body {
 
 .blue-gradient {
    position: absolute;
-   width: 1440px;
+   width: 100%;
    height: 456px;
    left: 0;
    top: 116px;

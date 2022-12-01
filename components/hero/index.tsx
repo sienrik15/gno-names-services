@@ -180,6 +180,8 @@ export const Hero = () => {
             css={{position: 'absolute', inset: '0p', left: '0', mt: '$10'}}
          />
          {/*opacity: 20%;filter: invert(100%); */}
+         {/* <Image containerCss={{display: 'contents'}} css={{position: 'absolute',top: '76px', transform: 'scaleX(-1)', zIndex:'0', opacity:'46%',width:'auto',height:'auto'}} src="gno-universe.png" />
+         <Image containerCss={{display: 'contents'}} css={{position: 'absolute', zIndex:'0', top:'0px',width: '100%',height:'auto'}} src="stars-desktop-gno.webp" />   */}
          <img style={{position: 'absolute',top: '76px', transform: 'scaleX(-1)', zIndex:'0', opacity:'46%',}} src="gno-universe.png" />
          <img style={{position: 'absolute', zIndex:'0', top:'0px',width: '100%'}} src="stars-desktop-gno.webp" />  
          <Modal

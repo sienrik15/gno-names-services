@@ -30,14 +30,66 @@ export const ModalLogin = () => {
 
 
    useEffect(() => {
-      if (firstRender.current) {
+      var account:any = getCookie('accountdata')
+      if (firstRender.current && account) {
          firstRender.current = false;
-         loginAdenaWallet()
+         //@ts-ignore
+         if (window.adena) {initAdenaWallet()}
       }
    })
 
    function disconnectWallet(){
 
+   }
+
+   async function initAdenaWallet() {
+      //@ts-ignore
+      adena.AddEstablish("GNO Domains").then((data) => {
+            
+         switch (data.type) {
+            case "CONNECTION_SUCCESS":
+               var objectString = JSON.stringify(data);
+               setCookie('conectwallet', objectString);         
+               setConectWallet(data)
+               //@ts-ignore
+               window.adena.GetAccount().then((account)=>{
+                  var objectString = JSON.stringify(account);
+                  setCookie('accountdata', objectString);         
+                  setAccountData(account)
+                  closeHandler()
+               })                  
+               break;
+            case "ALREADY_CONNECTED":
+               var conect:any = getCookie('conectwallet')
+               if(conect!=undefined){
+                  var object = JSON.parse(conect)
+                  setConectWallet(object)
+               }else{
+                  var objectString = JSON.stringify(data);
+                  setCookie('conectwallet', objectString);         
+                  setConectWallet(data)
+               }
+
+               var account:any = getCookie('accountdata')
+               if(account!=undefined){
+                  var object = JSON.parse(account)
+                  setAccountData(object)
+               }else{
+                  //@ts-ignore
+                  window.adena.GetAccount().then((account)=>{
+                     var objectString = JSON.stringify(account);
+                     setCookie('accountdata', objectString);         
+                     setAccountData(account)
+                     closeHandler()
+                  })
+               }
+               closeHandler()
+               break;
+            default:
+               break;
+         }
+         
+      });
    }
 
    async function loginAdenaWallet (){
@@ -47,40 +99,7 @@ export const ModalLogin = () => {
          window.open("https://adena.app/", "_blank");
       } else {
          //@ts-ignore
-         adena.AddEstablish("GNO Domains").then((data) => {
-            
-            switch (data.type) {
-               case "CONNECTION_SUCCESS":
-                  var objectString = JSON.stringify(data);
-                  setCookie('conectwallet', objectString);         
-                  setConectWallet(data)
-                  //@ts-ignore
-                  window.adena.GetAccount().then((account)=>{
-                     var objectString = JSON.stringify(account);
-                     setCookie('accountdata', objectString);         
-                     setAccountData(account)
-                     closeHandler()
-                  })                  
-                  break;
-               case "ALREADY_CONNECTED":
-                  var conect:any = getCookie('conectwallet')
-                  if(conect!=undefined || conect!=""){
-                     var object = JSON.parse(conect)
-                     setConectWallet(object)
-                  }
-
-                  var account:any = getCookie('accountdata')
-                  if(account!=undefined || account!=""){
-                     var object = JSON.parse(account)
-                     setAccountData(object)
-                  }
-                  closeHandler()
-                  break;
-               default:
-                  break;
-            }
-            
-         });
+         initAdenaWallet()
       }
    }
 
@@ -110,13 +129,14 @@ export const ModalLogin = () => {
                      onClick={()=>{}}
                      //pointer
                      src="logo-circular-adena.svg"
-                     name={accountData.data.address}
+                     //@ts-ignore
+                     name="_.gno"//{accountData.data.address}
                      size="ms"
                      color="success"
                      css={{
                         '& span': {
                            textTransform: 'lowercase',
-                           fontSize:"12px", //"16PX"
+                           fontSize:"16px", //"16PX"
                            fontWeight: 'bold',
                            maxWidth: "100px",
                         },
@@ -143,11 +163,13 @@ export const ModalLogin = () => {
                   >
                      <Row justify="center" align="center">
                         <Text b size={14} css={{textTransform: 'uppercase',}}>
+                           {/*@ts-ignore*/}
                            GNO {accountData.data.chainId}
                         </Text>
                      </Row>  
                      <Row css={{paddingTop:"10px",paddingBottom:'10px'}} justify="center" align="center">
                         <Text>
+                        {/*@ts-ignore*/}
                         {accountData.data.address}
                         </Text>
                      </Row> 
