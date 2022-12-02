@@ -44,6 +44,14 @@ export const ModalLogin = () => {
       }
    }
 
+   function disconnectWallet(){
+      console.log("delet")
+      deleteCookie("conectwallet")
+      deleteCookie("accountdata")
+      setAccountData(undefined)
+      setConectWallet(undefined)
+   }
+
    async function initAdenaWallet() {
       //@ts-ignore
       adena.AddEstablish("GNO Domains").then((data) => {
@@ -170,26 +178,26 @@ export const ModalLogin = () => {
                         </Text>
                      </Row>  
                      <Row css={{paddingTop:"10px",paddingBottom:'10px'}} justify="center" align="center">
-                        <Text>
+                        <Text size={14}>
                         {/*@ts-ignore*/}
-                        {accountData.data.address}
+                        <strong>{accountData.data.address}</strong>
                         </Text>
                      </Row> 
                      <Row>
-                        <Text>
+                        <Text css={{color:'#8d8d8d'}}>
                            Balance
                         </Text>
                      </Row>
-                     <Row justify="center" align="center">
-                        <Text size={20}>
+                     <Row justify="center" align="center" css={{borderBottom: "solid 1px #3f3f3f", marginBottom:"8px"}} >
+                        <Text size={20} css={{marginBottom:"8px"}}>
                            <strong>{getCoinGNOT()} GNOT</strong>
                         </Text>
                      </Row> 
-                     {/* <Row css={{paddingTop:"10px",paddingBottom:'10px'}} justify="center" align="center">
-                        <Button onPress={disconnectWallet()} size="sm" bordered css={{borderColor:'#ffffff', color:'#ffffff'}}>
+                     <Row css={{paddingTop:"10px",paddingBottom:'10px'}} justify="center" align="center">
+                        <Button onPress={()=>{disconnectWallet()}} size="sm" bordered css={{borderColor:'#ffffff', color:'#ffffff'}}>
                            Disconnect
                         </Button>
-                     </Row>   */}
+                     </Row>  
                   </Grid.Container>
                </Popover.Content>
             </Popover>
