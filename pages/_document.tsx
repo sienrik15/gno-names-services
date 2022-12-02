@@ -30,7 +30,8 @@ class MyDocument extends Document {
                rel="stylesheet"
             />
             <title>Gno Domains</title>
-            <link rel="icon" href="/favicon-white.ico"/>
+            {/* <link rel="icon" href="/favicon-white.ico"/> */}
+            <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             <Head>{CssBaseline.flush()}</Head>
 
             <body>
