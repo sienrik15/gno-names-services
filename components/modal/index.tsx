@@ -30,16 +30,18 @@ export const ModalLogin = () => {
 
 
    useEffect(() => {
+      window.addEventListener("load", detectWallet, true);
+   })
+
+   function detectWallet(){
       var account:any = getCookie('accountdata')
       if (firstRender.current && account) {
          firstRender.current = false;
          //@ts-ignore
-         if (window.adena) {initAdenaWallet()}
+         if (window.adena) {
+            initAdenaWallet()
+         }
       }
-   })
-
-   function disconnectWallet(){
-
    }
 
    async function initAdenaWallet() {
