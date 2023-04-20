@@ -113,7 +113,7 @@ export const Trusted = () => {
                   }}>
                      <Flex align={'center'}>
                         <Text weight={'semibold'} span size={'$lg'}>
-                           space.gno
+                           💎.gno
                         </Text>
                      </Flex>
                   </div>

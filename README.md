@@ -1,4 +1,4 @@
-# NextJS and NextUI
+# GNO DOMAINS UI NEXTJS
 
 This is a proyect web UI GNO name and domains service . 
 

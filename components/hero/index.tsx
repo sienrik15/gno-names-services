@@ -1,4 +1,4 @@
-import {Button, Divider, Input, Text, Modal,Image} from '@nextui-org/react';
+import {Button, Divider, Input, Text, Modal,Image, Grid} from '@nextui-org/react';
 import React from 'react';
 import {CheckIcon} from '../icons/CheckIcon';
 import {Box} from '../styles/box';
@@ -13,6 +13,45 @@ export const Hero = () => {
       setVisible(false);
       console.log('closed');
    };
+
+
+   function eventContract(){ 
+      //@ts-ignore
+      adena.DoContract({
+         message: {
+            type: "/vm.m_call",
+            value: {
+               caller:"g1k8p7x84gjcy0recfkzvfgljxyyxdlgu02y6w50",
+               send:"",
+               pkg_path:"gno.land/r/demo/gnodomains",
+               func:"CreateBoard",
+               args:[
+                  "gno_domains"
+               ]
+            }
+         },
+         // message: {
+         //    type: "/vm.m_call",
+         //    value: {
+         //       caller: "g1k8p7x84gjcy0recfkzvfgljxyyxdlgu02y6w50",
+         //       send: "200000000ugnot",
+         //       pkg_path: "gno.land/r/demo/users",
+         //       func: "Register",
+         //       args: [
+         //          "",
+         //          "enriquesam",
+         //          "https://github.com/sienrik15"
+         //       ]
+         //    }
+         // },
+        //denom in ugnot
+        gasFee: 1,
+        gasWanted: 5000000
+      }).then((data:any) => {
+         console.log(data)
+     })
+   }
+
    return (
       <>
          <Flex
@@ -93,37 +132,41 @@ export const Hero = () => {
                   </strong>
                </Text>
 
-               <form
-                  //action="#"
-                  method="dialog"
-                  onSubmit={handler}
-               >  
-               <Flex
-                  css={{
-                     gap: '$4',
-                     pt: '$4',
-                  }}
-                  wrap={'wrap'}
-                  //justify = {'center'}
-                  align={'center'}
-               >
-                  <Input
-                     id='names-input'
-                     bordered 
-                     animated={false}
-                     labelRight=".gno" 
-                     placeholder="search names" 
-                     size="xl"
-                     width="70%" 
-                     css = {{
-                        '& label':{
-                           'box-shadow': '0 0 0 var(--nextui--inputBorderWeight) var(--nextui--inputHoverBorderColor)'
-                        }
+               {/* <form //action="#"
+                  method="dialog" onSubmit={eventContract} >  
+                  <Flex
+                     css={{
+                        gap: '$4',
+                        pt: '$4',
                      }}
-                  />
-                  <Button onClick={handler} css={{background:'#ffffff', color:'#000000'}} size="lg" auto>Search</Button>
-               </Flex>
-               </form>  
+                     wrap={'wrap'}
+                     //justify = {'center'}
+                     align={'center'}
+                  >
+                     <Input
+                        id='names-input' bordered  animated={false} labelRight=".gno" 
+                        placeholder="search names" size="xl" width="70%" 
+                        css = {{
+                           '& label':{
+                              'box-shadow': '0 0 0 var(--nextui--inputBorderWeight) var(--nextui--inputHoverBorderColor)'
+                           }
+                        }}
+                     />
+                     <Button onClick={eventContract} css={{background:'#ffffff', color:'#000000'}} size="lg" auto>Search</Button>
+                  </Flex>
+               </form>   */}
+               <Grid.Container gap={2}>
+                  <Grid>
+                     <Button shadow size="lg" css={{height: "53px"}} bordered color="secondary" auto>
+                        <span style={{color:"#ffffff"}} onClick={()=>{setVisible(true)}}>Start dApp</span>
+                     </Button>
+                  </Grid>
+                  <Grid>
+                     <Button shadow size="lg" css={{height: "53px"}} bordered color="primary" auto>
+                        <span style={{color:"#ffffff"}} onClick={()=>{setVisible(true)}}>RoadMap</span>
+                     </Button>
+                  </Grid> 
+               </Grid.Container>
                
                {/* <Flex
                   wrap={'wrap'}
